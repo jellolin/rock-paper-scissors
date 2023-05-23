@@ -5,15 +5,52 @@ let playerPoints;
 let computerPoints;
 
 getComputerChoice();
+//computerSelection = "scissors";
 getPlayerChoice();
 playRound(playerSelection, computerSelection);
 
+
 function playRound(playerSelection, computerSelection) {
+    //Capitalize the first word
+    let selectionCapitalized = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
     if (playerSelection === computerSelection) {
-        //Tie! Capitalize the first word
-        let selectionCapitalized = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+        //Tie!
         console.log(`It's a tie! ${selectionCapitalized} and ${computerSelection} don't beat each other.`);
+        return null;
     }
+    else if (playerSelection === "rock") {
+        //If computer chose scissors, player wins
+        if (computerSelection === "scissors") {
+            console.log(`You win this round! ${selectionCapitalized} beats ${computerSelection}.`);
+            return true;
+        }
+        //If computer chose paper, player loses
+        else {
+            return false;
+        }
+    }
+    else if (playerSelection === "paper") {
+        //If computer chose rock, player wins
+        if (computerSelection === "rock") {
+            return true;
+        }
+        //If computer chose scissors, player loses
+        else {
+            return false;
+        }
+    }
+    //If player chose scissors
+    else {
+        //If computer chose paper, player wins
+        if (computerSelection === "paper") {
+            return true;
+        }
+        //If computer chose rock, player loses
+        else {
+            return false;
+        }
+    }
+
 }
 
 //Randomly choose between rock, paper, and scissors for computer selection
@@ -41,7 +78,7 @@ function getPlayerChoice() {
     else {
         playerSelection = query.toLowerCase();
         //If player enters something other than rock, paper, or scissors
-        if (query != "rock" || query != "paper" || query != "scissors") {
+        if (query !== "rock" || query !== "paper" || query !== "scissors") {
             console.log("You entered a choice other than rock, paper, or scissors.");
             //Maybe stop game at this point too
         }
