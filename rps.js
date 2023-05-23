@@ -56,30 +56,30 @@ function playRound(playerSelection, computerSelection) {
     let selectionCapitalized = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
     if (playerSelection === computerSelection) {
         //Tie!
-        console.log(`It's a tie! ${selectionCapitalized} and ${computerSelection} don't beat each other.`);
+        alert(`It's a tie! ${selectionCapitalized} and ${computerSelection} don't beat each other.`);
         return null;
     }
     else if (playerSelection === "rock") {
         //If computer chose scissors, player wins
         if (computerSelection === "scissors") {
-            console.log(`You win this round! ${selectionCapitalized} beats ${computerSelection}.`);
+            alert(`You win this round! ${selectionCapitalized} beats ${computerSelection}.`);
             return true;
         }
         //If computer chose paper, player loses
         else {
-            console.log(`You lose this round! ${selectionCapitalized} is weak against ${computerSelection}.`);
+            alert(`You lose this round! ${selectionCapitalized} is weak against ${computerSelection}.`);
             return false;
         }
     }
     else if (playerSelection === "paper") {
         //If computer chose rock, player wins
         if (computerSelection === "rock") {
-            console.log(`You win this round! ${selectionCapitalized} beats ${computerSelection}.`);
+            alert(`You win this round! ${selectionCapitalized} beats ${computerSelection}.`);
             return true;
         }
         //If computer chose scissors, player loses
         else {
-            console.log(`You lose this round! ${selectionCapitalized} is weak against ${computerSelection}.`);
+            alert(`You lose this round! ${selectionCapitalized} is weak against ${computerSelection}.`);
             return false;
         }
     }
@@ -87,12 +87,12 @@ function playRound(playerSelection, computerSelection) {
     else {
         //If computer chose paper, player wins
         if (computerSelection === "paper") {
-            console.log(`You win this round! ${selectionCapitalized} beats ${computerSelection}.`);
+            alert(`You win this round! ${selectionCapitalized} beats ${computerSelection}.`);
             return true;
         }
         //If computer chose rock, player loses
         else {
-            console.log(`You lose this round! ${selectionCapitalized} is weak against ${computerSelection}.`);
+            alert(`You lose this round! ${selectionCapitalized} is weak against ${computerSelection}.`);
             return false;
         }
     }
