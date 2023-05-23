@@ -1,15 +1,54 @@
 //Define global variables
 let playerSelection;
 let computerSelection;
-let playerPoints;
-let computerPoints;
+let playerScore = 0;
+let computerScore = 0;
 let gameExit = false;
 
-getComputerChoice();
-//computerSelection = "scissors";
-getPlayerChoice();
-if (!gameExit) {
-    playRound(playerSelection, computerSelection);
+playGame();
+
+
+function determineWinner(playerScore, computerScore) {
+    if (playerScore === computerScore) {
+        console.log("IT'S A TIE! Refresh to play again.");
+    }
+    else if (playerScore > computerScore) {
+        console.log("THE PLAYER WINS! Refresh to play again.");
+    }
+    else {
+        console.log("THE COMPUTER WINS! Refresh to try again.");
+    }
+}
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        //If last round was invalid, do not proceed with new prompts
+        if (!gameExit) {
+            getComputerChoice();
+            getPlayerChoice();
+            //If conditions for string are valid, proceed with round
+            if (!gameExit) {
+                let areYouWinning = playRound(playerSelection, computerSelection);
+                if (areYouWinning === null) {
+                    //If tie, leave scores alone
+                    console.log(`No one gets points.`);
+                }
+                else if (areYouWinning === true) {
+                    //If player wins increase player score
+                    console.log(`Player has ${++playerScore} points.`);
+                    console.log(`Computer has ${computerScore} points.`);
+                }
+                else {
+                    //If player loses increase computer score
+                    console.log(`Player has ${playerScore} points.`);
+                    console.log(`Computer has ${++computerScore} points.`);
+                }
+                console.log(`Round ${i+1} Completed.`);
+            }
+        }
+        else console.log("Game Exited");
+    }
+    determineWinner(playerScore, computerScore);
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -63,7 +102,7 @@ function playRound(playerSelection, computerSelection) {
 //Randomly choose between rock, paper, and scissors for computer selection
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3) + 1;
-    console.log(choice);
+    //console.log(choice);
     if (choice === 1) {
         computerSelection = "rock";
     }
