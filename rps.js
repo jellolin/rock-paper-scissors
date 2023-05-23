@@ -28,16 +28,19 @@ function playRound(playerSelection, computerSelection) {
         }
         //If computer chose paper, player loses
         else {
+            console.log(`You lose this round! ${selectionCapitalized} is weak against ${computerSelection}.`);
             return false;
         }
     }
     else if (playerSelection === "paper") {
         //If computer chose rock, player wins
         if (computerSelection === "rock") {
+            console.log(`You win this round! ${selectionCapitalized} beats ${computerSelection}.`);
             return true;
         }
         //If computer chose scissors, player loses
         else {
+            console.log(`You lose this round! ${selectionCapitalized} is weak against ${computerSelection}.`);
             return false;
         }
     }
@@ -45,10 +48,12 @@ function playRound(playerSelection, computerSelection) {
     else {
         //If computer chose paper, player wins
         if (computerSelection === "paper") {
+            console.log(`You win this round! ${selectionCapitalized} beats ${computerSelection}.`);
             return true;
         }
         //If computer chose rock, player loses
         else {
+            console.log(`You lose this round! ${selectionCapitalized} is weak against ${computerSelection}.`);
             return false;
         }
     }
