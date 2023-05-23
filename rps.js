@@ -6,6 +6,15 @@ let computerPoints;
 
 getComputerChoice();
 getPlayerChoice();
+playRound(playerSelection, computerSelection);
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        //Tie! Capitalize the first word
+        let selectionCapitalized = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+        console.log(`It's a tie! ${selectionCapitalized} and ${computerSelection} don't beat each other.`);
+    }
+}
 
 //Randomly choose between rock, paper, and scissors for computer selection
 function getComputerChoice() {
