@@ -5,6 +5,7 @@ let playerPoints;
 let computerPoints;
 
 getComputerChoice();
+getPlayerChoice();
 
 //Randomly choose between rock, paper, and scissors for computer selection
 function getComputerChoice() {
@@ -18,4 +19,10 @@ function getComputerChoice() {
     }
     else
     computerSelection = "scissors";
+}
+
+//Get player choice with prompt, convert it to lowercase, and store it in playerSelection 
+function getPlayerChoice() {
+    let query = prompt("Rock, paper, or scissors?", "rock");
+    playerSelection = query.toLowerCase();
 }
