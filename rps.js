@@ -72,16 +72,20 @@ function getComputerChoice() {
 //Get player choice with prompt, convert it to lowercase, and store it in playerSelection 
 function getPlayerChoice() {
     let query = prompt("Rock, paper, or scissors?", "rock");
-    //If player presses cancel and string is null
-    if(query == null) {
-        console.log("You pressed cancel.");
+    //If player presses cancel and string is null or string is empty
+    if(query == null || query === "") {
+        console.log("You pressed cancel or entered an empty string.");
         //Stop game at this point too
         gameExit = true;
     }
     else {
         playerSelection = query.toLowerCase();
+        //Check if player input is valid.
+        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
+            gameExit = false;
+        }
         //If player enters something other than rock, paper, or scissors
-        if (query !== "rock" || query !== "paper" || query !== "scissors") {
+        else {
             console.log("You entered a choice other than rock, paper, or scissors.");
             //Stop game at this point too
             gameExit = true;
