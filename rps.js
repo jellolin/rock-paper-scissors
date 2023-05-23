@@ -3,12 +3,14 @@ let playerSelection;
 let computerSelection;
 let playerPoints;
 let computerPoints;
+let gameExit = false;
 
 getComputerChoice();
 //computerSelection = "scissors";
 getPlayerChoice();
-playRound(playerSelection, computerSelection);
-
+if (!gameExit) {
+    playRound(playerSelection, computerSelection);
+}
 
 function playRound(playerSelection, computerSelection) {
     //Capitalize the first word
@@ -73,14 +75,16 @@ function getPlayerChoice() {
     //If player presses cancel and string is null
     if(query == null) {
         console.log("You pressed cancel.");
-        //Maybe stop game at this point too
+        //Stop game at this point too
+        gameExit = true;
     }
     else {
         playerSelection = query.toLowerCase();
         //If player enters something other than rock, paper, or scissors
         if (query !== "rock" || query !== "paper" || query !== "scissors") {
             console.log("You entered a choice other than rock, paper, or scissors.");
-            //Maybe stop game at this point too
+            //Stop game at this point too
+            gameExit = true;
         }
     }
 }
